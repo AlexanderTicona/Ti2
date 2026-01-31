@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Visor Civil Pro V2.0</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#070708">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-shell">
+        <aside class="sidebar">
+            <div class="brand">BIM</div>
+            <nav class="view-switcher">
+                <button class="nav-btn active" data-layout="mixed">
+                    <span class="full-name">MULTI</span><span class="short-name">MLT</span>
+                </button>
+                <button class="nav-btn" data-layout="planta">
+                    <span class="full-name">PLANTA</span><span class="short-name">PL</span>
+                </button>
+                <button class="nav-btn" data-layout="perfil">
+                    <span class="full-name">PERFIL</span><span class="short-name">PE</span>
+                </button>
+                <button class="nav-btn" data-layout="seccion">
+                    <span class="full-name">SECCION</span><span class="short-name">ST</span>
+                </button>
+            </nav>
+            <div class="spacer"></div>
+            <button class="nav-btn secondary">⚙</button>
+        </aside>
+
+        <main class="main-stage">
+            <header class="top-nav">
+                <div class="pk-group">
+                    <span class="pk-prefix">PK</span>
+                    <input type="text" id="pk-input" value="0+000.00" spellcheck="false">
+                </div>
+                <div class="header-spacer"></div>
+                <button class="btn-primary" id="trigger-file">CARGAR PROYECTO</button>
+                <input type="file" id="file-input" multiple hidden>
+            </header>
+
+            <div id="viewport-grid" class="layout-mixed">
+                <section class="v-container" id="v-planta">
+                    <div class="v-header">VISTA DE PLANTA</div>
+                    <canvas id="canvas-planta"></canvas>
+                </section>
+                <section class="v-container" id="v-perfil">
+                    <div class="v-header">PERFIL LONGITUDINAL</div>
+                    <canvas id="canvas-perfil"></canvas>
+                </section>
+                <section class="v-container" id="v-seccion">
+                    <div class="v-header">SECCIÓN TRANSVERSAL</div>
+                    <canvas id="canvas-seccion"></canvas>
+                </section>
+            </div>
+
+            <footer class="bottom-controls">
+                <div class="grid-inputs">
+                    <input type="number" id="grid-x" value="5">
+                    <input type="number" id="grid-y" value="5">
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="master-slider" min="0" max="100" value="0" step="0.01">
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/state.js"></script>
+    <script src="js/utils.js"></script> <script src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log("TI Visor: Modo App Activo"));
+        }
+    </script>
+</body>
+</html>

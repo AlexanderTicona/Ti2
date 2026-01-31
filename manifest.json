@@ -1,0 +1,21 @@
+{
+  "name": "Tiqal Visor Civil",
+  "short_name": "TI",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#00f2ff",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/050505/00f2ff?text=TI",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/050505/00f2ff?text=TI",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
